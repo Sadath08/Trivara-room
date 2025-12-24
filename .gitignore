@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+.env
+venv/
+
+# ML / models
+models/
+checkpoints/
+*.h5
+*.pt
+
+# Node
+node_modules/
+dist/
+build/
+
+# OS
+.DS_Store
+Thumbs.db
