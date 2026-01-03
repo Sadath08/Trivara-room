@@ -1,0 +1,171 @@
+/* Leaflet CSS for maps - must be imported first */
+@import 'leaflet/dist/leaflet.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+  /* CSS Custom Properties for Design Tokens */
+  :root {
+    /* Base Colors */
+    --color-ivory: #F5F1EC;
+    --color-bone: #E9E3DA;
+    --color-graphite: #1C1C1E;
+    --color-neutral: #8E8E93;
+
+    /* Accent Colors */
+    --color-accent-slate: #2F3A4A;
+    --color-accent-slate-hover: #3B4758;
+    --color-accent-moss: #3F4F3C;
+
+    /* Status Colors */
+    --color-status-confirmed: #3A5F4B;
+    --color-status-limited: #C7BBAF;
+    --color-status-failure: #5C2A2A;
+    --color-status-info: #5E5E62;
+
+    /* Dividers & Borders */
+    --color-divider: #D8D2C8;
+    --color-stone: #C7BBAF;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply antialiased;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    background-color: var(--color-ivory);
+    color: var(--color-graphite);
+    /* Subtle paper grain texture */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+    background-attachment: fixed;
+  }
+
+  /* Dark mode */
+  .dark body {
+    background-color: var(--color-graphite);
+    color: var(--color-bone);
+  }
+
+  * {
+    @apply border-neutral-200;
+  }
+
+  .dark * {
+    @apply border-neutral-800;
+  }
+}
+
+@layer utilities {
+  .line-clamp-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+}
+
+/* Shimmer animation */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* Focus visible styles for accessibility - using accent color */
+*:focus-visible {
+  @apply outline-none ring-2 ring-offset-2;
+  ring-color: var(--color-accent-slate);
+}
+
+/* Smooth scrollbar - updated colors */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--color-bone);
+}
+
+.dark ::-webkit-scrollbar-track {
+  background-color: #2C2C2E;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-neutral);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #5E5E62;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background-color: #5E5E62;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-neutral);
+}
+
+/* Selection styles - muted, no bright colors */
+::selection {
+  background-color: var(--color-stone);
+  color: var(--color-graphite);
+}
+
+.dark ::selection {
+  background-color: #3A3A3C;
+  color: var(--color-bone);
+}
+
+/* Layered neutrals instead of borders */
+.layered-surface {
+  background-color: var(--color-bone);
+  box-shadow: none;
+  border: none;
+}
+
+.dark .layered-surface {
+  background-color: #2C2C2E;
+}
+
+/* Typography weight classes */
+.font-meta {
+  @apply font-light;
+}
+
+.font-body {
+  @apply font-normal;
+}
+
+.font-heading {
+  @apply font-medium;
+}
+
+.font-price {
+  @apply font-medium;
+}
